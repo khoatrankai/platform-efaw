@@ -1,0 +1,16 @@
+services:
+  api_gateway:
+    build: ./api-gateway
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./api-gateway/src:/usr/src/app/src
+    command: npm run start:dev
+    environment:
+      - PORT=3001
+  users_service:
+    build: ./user-service
+    volumes:
+      - ./user-service/src:/usr/src/app/src
+    command: npm run start:dev
+  

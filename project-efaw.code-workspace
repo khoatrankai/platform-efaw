@@ -1,0 +1,32 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "backend/api-gateway"
+    },
+    {
+      "path": "backend/auth-service"
+    },
+    {
+      "path": "backend/social-efaw/chat-service"
+    },
+    {
+      "path": "backend/social-efaw/friendship-service"
+    },
+    {
+      "path": "backend/social-efaw/group-service"
+    },
+    {
+      "path": "backend/social-efaw/page-service"
+    },
+    {
+      "path": "backend/social-efaw/post-service"
+    },
+    {
+      "path": "backend/social-efaw/user-service"
+    }
+  ],
+  "settings": {}
+}
