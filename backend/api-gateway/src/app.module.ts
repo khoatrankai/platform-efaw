@@ -1,33 +1,21 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ClientsModule, Transport } from '@nestjs/microservices';
+import { AuthModule } from './modules/auth/auth.module';
+import { UserModule } from './modules/user/user.module';
+import { PostsModule } from './modules/post/post.module';
+import { ConfigModule } from '@nestjs/config';
+import { FriendModule } from './modules/friend/friend.module';
+import { PagesModule } from './modules/page/page.module';
+import { GroupsModule } from './modules/group/group.module';
 
 @Module({
   imports: [
-    ClientsModule.register([
-      {
-        name: 'USER',
-        transport:Transport.TCP,
-        options:{
-          port:3003
-        }
-      },
-      {
-        name: 'AUTH',
-        transport:Transport.TCP,
-        options:{
-          port:3002
-        }
-      },
-      {
-        name: 'POST',
-        transport:Transport.TCP,
-        options:{
-          port:3004
-        }
-      }
-    ])
+   AuthModule,UserModule,PostsModule,FriendModule,PagesModule,GroupsModule,
+   ConfigModule.forRoot({
+    isGlobal: true, 
+    envFilePath: '.env',
+  })
   ],
   controllers: [AppController],
   providers: [AppService],

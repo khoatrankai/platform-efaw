@@ -13,9 +13,6 @@
       "path": "backend/social-efaw/chat-service"
     },
     {
-      "path": "backend/social-efaw/friendship-service"
-    },
-    {
       "path": "backend/social-efaw/group-service"
     },
     {
@@ -26,6 +23,18 @@
     },
     {
       "path": "backend/social-efaw/user-service"
+    },
+    {
+      "path": "backend/social-efaw/profile-social-service"
+    },
+    {
+      "path": "backend/social-efaw/friend-service"
+    },
+    {
+      "path": "backend/email-service"
+    },
+    {
+      "path": "backend/user-service"
     }
   ],
   "settings": {}

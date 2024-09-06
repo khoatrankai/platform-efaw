@@ -14,6 +14,13 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         options:{
           port:3003
         }
+      },
+      {
+        name: 'MAIL',
+        transport:Transport.TCP,
+        options:{
+          port:3010
+        }
       }
     ]),
     JwtModule.registerAsync({

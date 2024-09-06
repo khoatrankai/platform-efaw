@@ -3,48 +3,39 @@ import {
     IsNotEmpty,
     IsOptional,
     IsEnum,
-    IsUrl,
+    IsArray,
+    IsMongoId,
   } from 'class-validator';
-  import { Transform } from 'class-transformer';
+import { Types } from 'mongoose';
   
   export class CreatePostDto {
     @IsString()
     @IsNotEmpty()
-    post_id: string;
-  
-    @IsEnum(['user', 'page', 'group'])
-    typePost: 'user' | 'page' | 'group';
-  
-    @IsOptional()
-    @IsString()
-    page_id?: string;
-  
-    @IsOptional()
-    @IsString()
-    group_id?: string;
-  
-    @IsString()
-    @IsNotEmpty()
     user_id: string;
   
-    @IsOptional()
-    @IsString()
-    share_id?: string;
+    @IsEnum(['private', 'public', 'delete', 'friend', 'private-group'])
+    status: string;
+  
+    @IsArray()
+    contents: string[];
   
     @IsOptional()
     @IsString()
-    content_main?: string;
+    description?: string;
   
     @IsOptional()
-    @IsUrl()
-    picture_url?: string;
-
-    @IsEnum(['public', 'delete', 'friend', 'private', 'privateGroup'])
-    @IsOptional()
-    status?: 'public' | 'delete' | 'friend' | 'private' | 'privateGroup';
+    @IsMongoId()
+    page?: Types.ObjectId;
   
-    @Transform(({ value }) => new Date(value), { toClassOnly: true })
     @IsOptional()
-    created_at?: Date;
+    @IsMongoId()
+    group?: Types.ObjectId;
+  
+    @IsEnum(['page', 'group', 'user'])
+    type_post: string;
+  
+    @IsOptional()
+    @IsMongoId()
+    post_share?: Types.ObjectId;
   }
   

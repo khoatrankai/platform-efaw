@@ -1,6 +1,8 @@
 services:
   api_gateway:
-    build: ./api-gateway
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
     ports:
       - "3001:3001"
     volumes:
@@ -8,9 +10,89 @@ services:
     command: npm run start:dev
     environment:
       - PORT=3001
-  users_service:
-    build: ./user-service
+    networks:
+      - mynetwork
+
+  user_service:
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
     volumes:
       - ./user-service/src:/usr/src/app/src
     command: npm run start:dev
-  
+    networks:
+      - mynetwork
+
+  auth_service:
+    build:
+      context: ./auth-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./auth-service/src:/usr/src/app/src
+    command: npm run start:dev
+    networks:
+      - mynetwork
+
+  email_service:
+    build:
+      context: ./email-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./email-service/src:/usr/src/app/src
+    command: npm run start:dev
+    networks:
+      - mynetwork
+
+  friend_service:
+    build:
+      context: ./social-efaw/friend-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./social-efaw/friend-service/src:/usr/src/app/src
+    command: npm run start:dev
+    networks:
+      - mynetwork
+
+  group_service:
+    build:
+      context: ./social-efaw/group-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./social-efaw/group-service/src:/usr/src/app/src
+    command: npm run start:dev
+    networks:
+      - mynetwork
+
+  page_service:
+    build:
+      context: ./social-efaw/page-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./social-efaw/page-service/src:/usr/src/app/src
+    command: npm run start:dev
+    networks:
+      - mynetwork
+
+  profile_social_service:
+    build:
+      context: ./social-efaw/profile-social-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./social-efaw/profile-social-service/src:/usr/src/app/src
+    command: npm run start:dev
+    networks:
+      - mynetwork
+
+  post_service:
+    build:
+      context: ./social-efaw/post-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./social-efaw/post-service/src:/usr/src/app/src
+    command: npm run start:dev
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
